@@ -37,6 +37,14 @@
   version = "1.0.0"
 
 [[projects]]
+  digest = "1:0256f446e49ddb65e602e2e4798d13c5bb80a7621886fba5932b873d5aa903c6"
+  name = "github.com/line/line-bot-sdk-go"
+  packages = ["linebot"]
+  pruneopts = "UT"
+  revision = "6bfb87d2637ac51fb9ff638dc8a154df23a5678a"
+  version = "v6.2.0"
+
+[[projects]]
   digest = "1:fa610f9fe6a93f4a75e64c83673dfff9bf1a34bbb21e6102021b6bc7850834a3"
   name = "github.com/mattn/go-isatty"
   packages = ["."]
@@ -76,6 +84,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/gin-gonic/gin"]
+  input-imports = [
+    "github.com/gin-gonic/gin",
+    "github.com/line/line-bot-sdk-go/linebot",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
