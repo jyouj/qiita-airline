@@ -34,17 +34,17 @@ func QiitaSearch(url string) string {
   // Start ChromeDriver
   driver := agouti.ChromeDriver(agouti.Browser("chrome"))
   if err := driver.Start(); err != nil {
-      log.Fatalf("Failed to start driver:%v", err)
+    log.Fatalf("Failed to start driver:%v", err)
   }
   defer driver.Stop()
 
   page, err := driver.NewPage()
   if err != nil {
-      log.Fatalf("Failed to open page:%v", err)
+    log.Fatalf("Failed to open page:%v", err)
   }
 
   if err := page.Navigate(url); err != nil {
-      log.Fatalf("Failed to navigate:%v", err)
+    log.Fatalf("Failed to navigate:%v", err)
   }
 
   content, err := page.HTML()
@@ -85,11 +85,13 @@ func QiitaSearch(url string) string {
   })
 
   // result
-  result0 := "Qiitaを検索してます......\n"
-  result1 := boxes[0].Title + "by" + boxes[0].Author + "\n" + boxes[0].Url + "\n"
-  result2 := boxes[1].Title + "by" + boxes[1].Author + "\n" + boxes[1].Url + "\n"
-  result3 := boxes[2].Title + "by" + boxes[2].Author + "\n" + boxes[2].Url
-  result := result0 + result1 + result2 + result3
+  /*result0 := "Qiitaを検索してます......\n"
+  result1 := boxes[0].Title + " by " + boxes[0].Author + "\n" + boxes[0].Url + "\n"
+  result2 := boxes[1].Title + " by " + boxes[1].Author + "\n" + boxes[1].Url + "\n"
+  result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url
+  result := result0 + result1 + result2 + result3*/
+
+  result := "検索してるよ"
 
   return result
 }
