@@ -67,10 +67,11 @@ func QiitaSearch(url string) string {
   var boxes QiitaBoxes
 
   // scraipe
-  doc.Find("body").EachWithBreak(func(i int, s *goquery.Selection) bool {
+  doc.Find(".tr-Item").EachWithBreak(func(i int, s *goquery.Selection) bool {
     // get title & author
-    box.Title = s.Text()
+    box.Title = s.Find("a.tr-Item_title").Text()
     box.Author = s.Find("a.tr-Item_author").Text()
+
     // get URL
     uncorrectUrl, _ := s.Find("a.tr-Item_title").Attr("href")
     correctUrl := "https://qiita.com" + uncorrectUrl
@@ -85,14 +86,11 @@ func QiitaSearch(url string) string {
   })
 
   // result
-  /*result0 := "Qiitaを検索してます......\n"
+  result0 := "Qiitaを検索してます......\n"
   result1 := boxes[0].Title + " by " + boxes[0].Author + "\n" + boxes[0].Url + "\n"
   result2 := boxes[1].Title + " by " + boxes[1].Author + "\n" + boxes[1].Url + "\n"
   result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url
-  result := result0 + result1 + result2 + result3*/
-
-  result0 := boxes[0].Title
-  result := result0[1900:3000]
+  result := result0 + result1 + result2 + result3
 
   return result
 }
