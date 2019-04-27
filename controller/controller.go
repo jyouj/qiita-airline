@@ -92,7 +92,7 @@ func QiitaSearch(url string) string {
   result := result0 + result1 + result2 + result3*/
 
   result0 := boxes[0].Title
-  result := result0[0:1990]
+  result := result0[1900:3000]
 
   return result
 }
