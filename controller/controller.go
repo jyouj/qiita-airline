@@ -78,20 +78,23 @@ func QiitaSearch(url string) string {
 
     boxes = append(boxes, box)
 
-    if i == 3 {
+    if i == 2 {
       return false
     }
     return true
   })
 
   // result
-  /*result0 := "Qiitaを検索してます......\n"
-  result1 := boxes[0].Title + " by " + boxes[0].Author + "\n" + boxes[0].Url + "\n"
-  result2 := boxes[1].Title + " by " + boxes[1].Author + "\n" + boxes[1].Url + "\n"
-  result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url
-  result := result0 + result1 + result2 + result3*/
+  result0 := "Qiitaを検索してます......\n"
 
-  result := "検索してるよ"
+  /*for _, box := range boxes {
+    word := box.Title + " by " + box.Author + "\n" + box.Url + "\n"
+    result += word
+  }*/
+  result1 := boxes[0].Title + " by " + boxes[0].Author + "\n" + boxes[0].Url + "\n"
+  /*result2 := boxes[1].Title + " by " + boxes[1].Author + "\n" + boxes[1].Url + "\n"
+  result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url*/
+  result := result0 + result1 // + result2 + result3
 
   return result
 }
