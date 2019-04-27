@@ -91,7 +91,8 @@ func QiitaSearch(url string) string {
   result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url
   result := result0 + result1 + result2 + result3*/
 
-  result := boxes[0].Title
+  result0 := boxes[0].Title
+  result := result0[0:100]
 
   return result
 }
