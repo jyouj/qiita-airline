@@ -67,9 +67,9 @@ func QiitaSearch(url string) string {
   var boxes QiitaBoxes
 
   // scraipe
-  doc.Find(".tr-item").EachWithBreak(func(i int, s *goquery.Selection) bool {
+  doc.Find("body").EachWithBreak(func(i int, s *goquery.Selection) bool {
     // get title & author
-    box.Title = s.Find("a.tr-Item_title").Text()
+    box.Title = s.Text()
     box.Author = s.Find("a.tr-Item_author").Text()
     // get URL
     uncorrectUrl, _ := s.Find("a.tr-Item_title").Attr("href")
@@ -85,16 +85,13 @@ func QiitaSearch(url string) string {
   })
 
   // result
-  result0 := "Qiitaを検索してます......\n"
-
-  /*for _, box := range boxes {
-    word := box.Title + " by " + box.Author + "\n" + box.Url + "\n"
-    result += word
-  }*/
+  /*result0 := "Qiitaを検索してます......\n"
   result1 := boxes[0].Title + " by " + boxes[0].Author + "\n" + boxes[0].Url + "\n"
-  /*result2 := boxes[1].Title + " by " + boxes[1].Author + "\n" + boxes[1].Url + "\n"
-  result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url*/
-  result := result0 + result1 // + result2 + result3
+  result2 := boxes[1].Title + " by " + boxes[1].Author + "\n" + boxes[1].Url + "\n"
+  result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url
+  result := result0 + result1 + result2 + result3*/
+
+  result := boxes[0].Title
 
   return result
 }
