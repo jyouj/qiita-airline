@@ -25,8 +25,8 @@ func QiitaController(message string) string {
     }
   case "-h":
     word1 := "QiitaAirline利用案内\n"
-    word2 := "-s: Qiitaの人気記事を3つ検索します(少し遅いです。ティータイムをお楽しみください)\n"
-    word3 := "-t <検索ワード>: 検索ワードにヒットしたQiita記事を3つお届けします\n"
+    word2 := "-s: Qiitaの人気記事を3つ検索します(少し遅いかも。ティータイムをお楽しみください)\n"
+    word3 := "-t <検索ワード>: 検索ワードにヒットしたQiita記事を1つお届けします\n"
     word4 := "-h: 使い方ガイドを表示します"
     result := word1 + word2 + word3 + word4
     return result
