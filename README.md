@@ -1,6 +1,4 @@
 # QiitaAirline
-![For participating in the 7th Annual Charleston Sports Fest Given this day 13th of June in the year 2020](https://user-images.githubusercontent.com/41543603/56892548-f2b63700-6aba-11e9-9413-49e980b2e3b7.png)
-
 This is a high-performance LINE Bot which searches Qiita!
 
 ## Usage
