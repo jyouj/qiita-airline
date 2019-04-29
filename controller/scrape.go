@@ -129,3 +129,47 @@ func SearchScraper(url string) string {
     return "お探しのものは見つかりませんでした"
   }
 }
+
+// scraipe popular author
+func AuthorScraper(url string) string {
+  content := ChromeController(url)
+
+  res := strings.NewReader(content)
+
+  // read HTML
+  doc, err := goquery.NewDocumentFromReader(res)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  var box QiitaBox
+  var boxes QiitaBoxes
+
+  doc.Find(".ra-User").EachWithBreak(func(i int, s *goquery.Selection) bool {
+    // get title & author
+    // box.Title = s.Find("h1.searchResult_itemTitle > a").Text()
+    box.Author = s.Find("div.ra-User_name > a").Text()
+
+    // get URL
+    uncorrectUrl, _ := s.Find("div.ra-User_name > a").Attr("href")
+    correctUrl := "https://qiita.com" + uncorrectUrl
+    box.Url = correctUrl
+
+    boxes = append(boxes, box)
+
+    time.Sleep(1 * time.Second)
+
+    if i == 2 {
+      return false
+    }
+    return true
+  })
+
+  result0 := "今週の人気ユーザーです！\n"
+  result1 := boxes[0].Author + "さん\n" + boxes[0].Url + "\n"
+  result2 := boxes[1].Author + "さん\n" + boxes[1].Url + "\n"
+  result3 := boxes[2].Author + "さん\n" + boxes[2].Url
+  result := result0 + result1 + result2 + result3
+
+  return result
+}
