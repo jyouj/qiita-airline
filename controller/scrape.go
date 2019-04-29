@@ -123,7 +123,7 @@ func SearchScraper(url string) string {
 
   // check existance
   if len(boxes) > 0 {
-    result := "こちらの記事が見つかりました！\n" + boxes[0].Title + "by" + boxes[0].Author + "\n" + boxes[0].Url
+    result := "こちらの記事が見つかりました！\n" + boxes[0].Title + " by " + boxes[0].Author + "\n" + boxes[0].Url
     return result
   } else {
     return "お探しのものは見つかりませんでした"
@@ -169,6 +169,49 @@ func AuthorScraper(url string) string {
   result1 := boxes[0].Author + "さん\n" + boxes[0].Url + "\n"
   result2 := boxes[1].Author + "さん\n" + boxes[1].Url + "\n"
   result3 := boxes[2].Author + "さん\n" + boxes[2].Url
+  result := result0 + result1 + result2 + result3
+
+  return result
+}
+
+func MilestonesScraper(url string) string {
+  content := ChromeController(url)
+
+  res := strings.NewReader(content)
+
+  // HTMLを読み込む
+  doc, err := goquery.NewDocumentFromReader(res)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  var box QiitaBox
+  var boxes QiitaBoxes
+
+  doc.Find(".ms-ItemContent").EachWithBreak(func(i int, s *goquery.Selection) bool {
+    // get title & author
+    box.Title = s.Find("a.ms-ItemContent_title").Text()
+    box.Author = s.Find("a.ms-ItemContent_author").Text()
+
+    // get URL
+    uncorrectUrl, _ := s.Find("a.ms-ItemContent_title").Attr("href")
+    correctUrl := "https://qiita.com" + uncorrectUrl
+    box.Url = correctUrl
+
+    boxes = append(boxes, box)
+
+    time.Sleep(1 * time.Second)
+
+    if i == 2 {
+      return false
+    }
+    return true
+  })
+
+  result0 := "Qiitaを検索してます......\n"
+  result1 := boxes[0].Title + " by " + boxes[0].Author + "\n" + boxes[0].Url + "\n"
+  result2 := boxes[1].Title + " by " + boxes[1].Author + "\n" + boxes[1].Url + "\n"
+  result3 := boxes[2].Title + " by " + boxes[2].Author + "\n" + boxes[2].Url
   result := result0 + result1 + result2 + result3
 
   return result

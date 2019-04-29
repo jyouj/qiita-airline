@@ -15,6 +15,10 @@ Please use [URL](https://line.me/R/ti/p/%40xfz6432g) or this QR to add a friend 
 
 `-h` is to teach you how to use this LINE Bot.
 
+`-a` is to search three popular users from a top page.
+
+`-m` is to search three articles which achieve 10 likes from milestones' page.
+
 ## Dependencies
 - [golang/go](https://github.com/golang/go)
 - [line/line-bot-sdk-go](https://github.com/line/line-bot-sdk-go)
