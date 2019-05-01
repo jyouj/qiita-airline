@@ -31,14 +31,18 @@ func QiitaController(message string) string {
     url := "https://qiita.com/milestones"
     result := MilestonesScraper(url)
     return result
+  case "-c":
+    result := "お問い合わせはこちらのTwitterアカウントまでお寄せください\nhttps://twitter.com/jyouj__"
+    return result
   case "-h":
     word1 := "QiitaAirline利用案内\n"
     word2 := "-s: Qiitaの人気記事を3つ検索します(少し遅いかも。ティータイムをお楽しみください)\n"
     word3 := "-t <検索ワード>: 検索ワードにヒットしたQiita記事を1つお届けします\n"
-    word4 := "-a: 今週の人気ユーザーをお伝えします！"
-    word5 := "-m: マイルストーンを検索します"
-    word6 := "-h: 使い方ガイドを表示します"
-    result := word1 + word2 + word3 + word4 + word5 + word6
+    word4 := "-a: 今週の人気ユーザーをお伝えします！\n"
+    word5 := "-m: マイルストーンを検索します\n"
+    word6 := "-h: 使い方ガイドを表示します\n"
+    word7 := "-c: お問い合わせ先を表示します"
+    result := word1 + word2 + word3 + word4 + word5 + word6 + word7
     return result
   }
   return result
